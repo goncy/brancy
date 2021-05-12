@@ -21,6 +21,7 @@ import {useTransforms} from "./store";
 function App() {
   const [transforms, setTransforms] = useTransforms();
   const {toggleColorMode} = useColorMode();
+  const boundaries = React.useRef<HTMLDivElement>(null);
 
   return (
     <Container
@@ -38,7 +39,7 @@ function App() {
       >
         <Stack
           height="100%"
-          maxWidth={{base: "100%", md: 275}}
+          maxWidth={{base: "100%", md: 320}}
           minHeight="100%"
           paddingY={4}
           spacing={8}
@@ -116,6 +117,7 @@ function App() {
           </Stack>
         </Stack>
         <Flex
+          ref={boundaries}
           alignItems="center"
           background={transforms.background}
           height="100%"

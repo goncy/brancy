@@ -31,7 +31,7 @@ export interface State {
 const INITIAL_STATE: State = {
   image: {
     blob: "https://pbs.twimg.com/media/E0BPkvvXsAAuBmG?format=jpg&name=large",
-    size: 75,
+    size: 50,
     borderRadius: 0,
   },
   shadow: {
