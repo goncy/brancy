@@ -11,4 +11,9 @@ export default extendTheme({
       },
     },
   },
+  sizes: {
+    container: {
+      xl: "1600px",
+    },
+  },
 });
