@@ -24,7 +24,7 @@ export interface State {
 
 const INITIAL_STATE: State = {
   image: {
-    blob: "//placehold.it/720x480",
+    blob: "https://pbs.twimg.com/media/E0BPkvvXsAAuBmG?format=jpg&name=large",
     size: 75,
     borderRadius: 0,
   },
