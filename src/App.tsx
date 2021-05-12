@@ -23,13 +23,31 @@ function App() {
   const {toggleColorMode} = useColorMode();
 
   return (
-    <Container alignSelf="center" height="100%" maxHeight="100vh" maxWidth="container.xl">
-      <Stack direction="row" divider={<StackDivider margin={0} />} height="100%" spacing={0}>
-        <Stack height="100%" maxWidth={275} paddingY={4} spacing={8} width="100%">
-          <Heading cursor="pointer" fontSize="2xl" onClick={toggleColorMode}>
+    <Container
+      alignSelf="center"
+      height="100%"
+      maxHeight={{base: "auto", md: "100vh"}}
+      maxWidth="container.xl"
+      paddingX={0}
+    >
+      <Stack
+        direction={{base: "column", md: "row"}}
+        divider={<StackDivider margin={0} />}
+        height="100%"
+        spacing={0}
+      >
+        <Stack
+          height="100%"
+          maxWidth={{base: "100%", md: 275}}
+          minHeight="100%"
+          paddingY={4}
+          spacing={8}
+          width="100%"
+        >
+          <Heading cursor="pointer" fontSize="2xl" paddingX={4} onClick={toggleColorMode}>
             Brancy
           </Heading>
-          <Stack flex={1} overflowY="auto" paddingRight={4} spacing={7}>
+          <Stack flex={1} overflowY="auto" paddingX={4} paddingY={4} spacing={7}>
             <Stack divider={<StackDivider />} spacing={3}>
               <Collapse isInitiallyOpen title="Image">
                 <ImageTransformer
@@ -55,6 +73,7 @@ function App() {
               </Collapse>
               <Collapse title="Perspective">
                 <PerspectiveTransformer
+                  value={transforms.perspective}
                   onChange={(perspective) =>
                     setTransforms((transforms) => ({
                       ...transforms,
@@ -65,6 +84,7 @@ function App() {
               </Collapse>
               <Collapse title="Background">
                 <BackgroundTransformer
+                  value={transforms.background}
                   onChange={(background) =>
                     setTransforms((transforms) => ({
                       ...transforms,
@@ -75,6 +95,7 @@ function App() {
               </Collapse>
               <Collapse title="Watermark">
                 <WatermarkTransformer
+                  value={transforms.watermark}
                   onChange={(watermark) =>
                     setTransforms((transforms) => ({
                       ...transforms,
@@ -85,7 +106,7 @@ function App() {
               </Collapse>
             </Stack>
           </Stack>
-          <Stack paddingRight={4} spacing={4}>
+          <Stack paddingX={4} spacing={4}>
             <Button colorScheme="primary" size="lg" width="100%">
               Guardar
             </Button>
@@ -99,6 +120,9 @@ function App() {
           background={transforms.background}
           height="100%"
           justifyContent="center"
+          minHeight="100%"
+          overflow="hidden"
+          position="relative"
           width="100%"
         >
           {transforms.image.blob && (
@@ -108,7 +132,36 @@ function App() {
               margin="auto"
               objectFit="contain"
               src={transforms.image.blob}
+              transform={`rotate3d(${transforms.perspective.x}, ${transforms.perspective.y}, ${transforms.perspective.z}, ${transforms.perspective.intensity}deg)`}
               width={`${transforms.image.size}%`}
+            />
+          )}
+          {transforms.watermark.blob && (
+            <Image
+              bottom={
+                transforms.watermark.position.includes("bottom")
+                  ? `${0 + transforms.watermark.margin}px`
+                  : "inherit"
+              }
+              left={
+                transforms.watermark.position.includes("left")
+                  ? `${0 + transforms.watermark.margin}px`
+                  : "inherit"
+              }
+              objectFit="contain"
+              position="absolute"
+              right={
+                transforms.watermark.position.includes("right")
+                  ? `${0 + transforms.watermark.margin}px`
+                  : "inherit"
+              }
+              src={transforms.watermark.blob}
+              top={
+                transforms.watermark.position.includes("top")
+                  ? `${0 + transforms.watermark.margin}px`
+                  : "inherit"
+              }
+              width={`${transforms.watermark.size}%`}
             />
           )}
         </Flex>

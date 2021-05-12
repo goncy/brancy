@@ -13,12 +13,18 @@ export interface State {
     blur: number;
     color: string;
   };
-  perspective: string;
+  perspective: {
+    x: number;
+    y: number;
+    z: number;
+    intensity: number;
+  };
   background: string;
   watermark: {
     blob: string;
     size: number;
     margin: number;
+    position: string;
   };
 }
 
@@ -35,12 +41,18 @@ const INITIAL_STATE: State = {
     blur: 0,
     color: "#000",
   },
-  perspective: "",
-  background: "primary.50",
+  perspective: {
+    x: 0,
+    y: 0,
+    z: 0,
+    intensity: 0,
+  },
+  background: "#fafafa",
   watermark: {
-    blob: "",
-    size: 25,
-    margin: 0,
+    blob: "https://pbs.twimg.com/media/E0BPkvvXsAAuBmG?format=jpg&name=large",
+    size: 10,
+    margin: 12,
+    position: "bottom-right",
   },
 };
 
