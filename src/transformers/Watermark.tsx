@@ -12,7 +12,12 @@ interface Props {
 const WatermarkTransformer: React.FC<Props> = () => {
   return (
     <Stack spacing={6}>
-      <Image borderRadius="md" height={36} src="//placehold.it/64x64" width={36} />
+      <Image
+        borderRadius="md"
+        height={36}
+        src="https://pbs.twimg.com/media/E0BPkvvXsAAuBmG?format=jpg&name=large"
+        width={36}
+      />
       <Stack spacing={3}>
         <Label text="Size">
           <Slider flex={1} />

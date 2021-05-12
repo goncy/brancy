@@ -13,7 +13,12 @@ interface Props {
 const ImageTransformer: React.FC<Props> = ({value, onChange}) => {
   return (
     <Stack spacing={6}>
-      <Image borderRadius="md" height={36} src="//placehold.it/64x64" width={36} />
+      <Image
+        borderRadius="md"
+        height={36}
+        src="https://pbs.twimg.com/media/E0BPkvvXsAAuBmG?format=jpg&name=large"
+        width={36}
+      />
       <Stack spacing={3}>
         <Label text="Scale">
           <Slider flex={1} value={value.size} onChange={(size) => onChange({...value, size})} />
