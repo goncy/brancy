@@ -131,7 +131,6 @@ function App() {
             <Image
               borderRadius={transforms.image.borderRadius}
               boxShadow={`${transforms.shadow.offsetX}px ${transforms.shadow.offsetY}px ${transforms.shadow.blur}px ${transforms.shadow.spread}px ${transforms.shadow.color}`}
-              margin="auto"
               src={transforms.image.blob}
               transform={`rotate3d(${transforms.perspective.x}, ${transforms.perspective.y}, ${transforms.perspective.z}, ${transforms.perspective.intensity}deg)`}
               width={`${transforms.image.size}%`}
